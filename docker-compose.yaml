@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  flask-service:
+    build: /Users/pl465j/flaskApp
+    volumes:
+       - /Users/pl465j/flaskApp:/usr/src/app
+    ports:
+       - 2021:2020
+
+  website:
+    image: php:apache
+    volumes:
+      - /Users/pl465j/phpApp:/var/www/html
+    ports:
+      - 2500:80
+    depends_on:
+      - flask-service
